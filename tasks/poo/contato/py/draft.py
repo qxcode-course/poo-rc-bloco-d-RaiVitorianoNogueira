@@ -8,17 +8,28 @@ class Contato:
 
 
     def __str__(self):
+        favorito = "@ " if self.__favorited else "- "
         lista = ", ".join([str(fone) for fone  in self.__fones])
-        return f"- {self.__nome} [{lista}]"
+        return f"{favorito}{self.__nome} [{lista}]"
     
 
     def addFone(self, id: str, number : str): 
         fone = Fone(id, (number))
+        if not fone.isValid():
+            print("fail: invalid number")
+            return 
         self.__fones.append(fone)
+        
+
 
     def rmFone(self, index: int):
-        self.__fones.pop(index)
-            
+        if 0 <= index < len(self.__fones):
+            self.__fones.pop(index)
+        else:
+            print("fail: invalid index")
+
+
+
 
 
 
