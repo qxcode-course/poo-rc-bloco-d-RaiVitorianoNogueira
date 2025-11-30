@@ -21,3 +21,15 @@
 2025-11-30 17:36:37, MOVE, v:1, k:poo@contato, mode:BACK
 2025-11-30 17:36:40, MOVE, v:1, k:poo@agenda, mode:PICK
 2025-11-30 17:36:57, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0, size:156
+2025-11-30 17:37:41, MOVE, v:1, k:poo@agenda, mode:BACK
+2025-11-30 17:39:56, SELF, v:1, k:poo@contato, rate:100, human:os_monitores_me_ajudaram_a_implementar_alguns_metodos_que_eu_nao_sabiaaa, alone:10, study:240
+2025-11-30 17:41:07, MOVE, v:1, k:poo@contato, mode:PICK
+2025-11-30 17:48:59, EXEC, v:1, k:poo@contato, mode:FULL, rate:100, size:157
+2025-11-30 17:50:05, EXEC, v:1, k:poo@contato, mode:FULL, rate:100, size:160
+2025-11-30 17:52:11, EXEC, v:1, k:poo@contato, mode:FULL, rate:0, size:166
+2025-11-30 17:53:04, EXEC, v:1, k:poo@contato, mode:FULL, rate:0, size:169
+2025-11-30 17:53:49, EXEC, v:1, k:poo@contato, mode:FULL, rate:100, size:170
+2025-11-30 17:55:41, EXEC, v:1, k:poo@contato, mode:FULL, rate:100, size:171
+2025-11-30 18:00:30, EXEC, v:1, k:poo@contato, mode:FULL, rate:100, size:178
+2025-11-30 18:01:42, EXEC, v:1, k:poo@contato, mode:FULL, rate:100, size:180
+2025-11-30 18:02:35, MOVE, v:1, k:poo@contato, mode:BACK

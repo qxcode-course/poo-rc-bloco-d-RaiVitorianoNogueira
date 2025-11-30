@@ -137,8 +137,48 @@
         },
         {
             "label": "2025-11-30_17-32-04",
-            "content": "class Contato:\n    def __init__(self, name: str=\"\"):\n        self.__nome : str  = name\n        self.__favorited : bool = False\n        self.__fones : list[Fone] = []\n\n\n\n\n    def __str__(self):\n        favorito = \"@ \" if self.__favorited else \"- \"\n        lista = \", \".join([str(fone) for fone  in self.__fones])\n        return f\"{favorito}{self.__nome} [{lista}]\"\n    \n\n    def addFone(self, id: str, number : str): \n        fone = Fone(id, (number))\n        if not fone.isValid():\n            print(\"fail: invalid number\")\n            return \n        self.__fones.append(fone)\n        \n\n\n    def rmFone(self, index: int):\n        if 0 <= index < len(self.__fones):\n            self.__fones.pop(index)\n        else:\n            print(\"fail: invalid index\")\n\n\n\n\n\n\n\n    def isFavorited(self):\n        return self.__favorited\n    \n    def toogleFavorited(self):\n        self.__favorited = not self.isFavorited()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass Fone:\n\n    def __init__(self, id: str, number: str):\n        self.id: str = id\n        self.number : str = number\n\n\n\n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n\n    \n    def isValid(self):\n        numeros = \"0123456789().\"\n        for i in self.number:\n                if i not in numeros:\n                    return False\n\n        return True\n    \n\n            \n\n        \n    \n\n        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndef main():\n    contato = Contato()\n\n    while True:\n        line = input()\n        args = line.split()\n        print(\"$\" + line)\n\n\n        if args[0] == \"init\":\n            contato = Contato(args[1])\n\n        elif args[0] == \"show\":\n            print(contato)\n\n        elif args[0] == \"add\":\n            contato.addFone(args[1],args[2])\n\n\n        elif args[0] == \"rm\":\n            contato.rmFone(int(args[1]))\n\n        elif args[0] == \"tfav\":\n            contato.toogleFavorited()\n\n\n        elif args[0] == \"end\":\n            break\n\n\n\n\n\n\nmain()",
+            "content": "@@ -164,57 +164,8 @@\n %5B%5D%0A%0A\n-    def getNome(self):%0A        return self.__nome\n %0A%0A%0A \n",
             "lines": "156"
+        },
+        {
+            "label": "2025-11-30_17-48-59",
+            "content": "@@ -214,63 +214,8 @@\n ome%0A\n-    %0A    def setNome(self):%0A        self.__nome = nome%0A\n %0A%0A  \n",
+            "lines": "157"
+        },
+        {
+            "label": "2025-11-30_17-50-05",
+            "content": "@@ -239,19 +239,8 @@\n self\n-, nome: str\n ):%0A \n@@ -271,105 +271,8 @@\n e%0A%0A%0A\n-    def getFavorited(self):%0A        return self.__favorited%0A    %0A    def setFavorited(self, ):%0A%0A%0A\n     \n",
+            "lines": "160"
+        },
+        {
+            "label": "2025-11-30_17-52-11",
+            "content": "@@ -374,67 +374,10 @@\n lf, \n-value: bool):%0A        self.__favorited = value%0A%0A    def get\n+):\n %0A%0A%0A \n",
+            "lines": "166"
+        },
+        {
+            "label": "2025-11-30_17-53-04",
+            "content": "@@ -433,48 +433,8 @@\n  get\n-Fones(self):%0A        return self.__fones\n %0A%0A%0A \n",
+            "lines": "169"
+        },
+        {
+            "label": "2025-11-30_17-53-49",
+            "content": "@@ -1353,51 +1353,8 @@\n er%0A%0A\n-    def getId(self):%0A        return self.id\n %0A%0A  \n",
+            "lines": "170"
+        },
+        {
+            "label": "2025-11-30_17-55-41",
+            "content": "@@ -1396,128 +1396,8 @@\n f.id\n-%0A    %0A    def setId(self, value: str):%0A        self.id = value%0A%0A    def getNumber(self):%0A        return self.number%0A    \n %0A%0A  \n",
+            "lines": "171"
+        },
+        {
+            "label": "2025-11-30_18-00-30",
+            "content": "@@ -1516,73 +1516,8 @@\n     \n-%0A    def setNumber(self, value: str):%0A        self.number = value\n %0A%0A  \n",
+            "lines": "178"
+        },
+        {
+            "label": "2025-11-30_18-01-42",
+            "content": "class Contato:\n    def __init__(self, name: str=\"\"):\n        self.__nome : str  = name\n        self.__favorited : bool = False\n        self.__fones : list[Fone] = []\n\n    def getNome(self):\n        return self.__nome\n    \n    def setNome(self, nome: str):\n        self.__nome = nome\n\n\n    def getFavorited(self):\n        return self.__favorited\n    \n    def setFavorited(self, value: bool):\n        self.__favorited = value\n\n    def getFones(self):\n        return self.__fones\n\n\n    def __str__(self):\n        favorito = \"@ \" if self.__favorited else \"- \"\n        lista = \", \".join([str(fone) for fone  in self.__fones])\n        return f\"{favorito}{self.__nome} [{lista}]\"\n    \n\n    def addFone(self, id: str, number : str): \n        fone = Fone(id, (number))\n        if not fone.isValid():\n            print(\"fail: invalid number\")\n            return \n        self.__fones.append(fone)\n        \n\n\n    def rmFone(self, index: int):\n        if 0 <= index < len(self.__fones):\n            self.__fones.pop(index)\n        else:\n            print(\"fail: invalid index\")\n\n\n\n\n\n\n\n    def isFavorited(self):\n        return self.__favorited\n    \n    def toogleFavorited(self):\n        self.__favorited = not self.isFavorited()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass Fone:\n\n    def __init__(self, id: str, number: str):\n        self.id: str = id\n        self.number : str = number\n\n    def getId(self):\n        return self.id\n    \n    def setId(self, value: str):\n        self.id = value\n\n    def getNumber(self):\n        return self.number\n    \n    def setNumber(self, value: str):\n        self.number = value\n\n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n\n    \n    def isValid(self):\n        numeros = \"0123456789().\"\n        for i in self.number:\n                if i not in numeros:\n                    return False\n\n        return True\n    \n\n            \n\n        \n    \n\n        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ndef main():\n    contato = Contato()\n\n    while True:\n        line = input()\n        args = line.split()\n        print(\"$\" + line)\n\n\n        if args[0] == \"init\":\n            contato = Contato(args[1])\n\n        elif args[0] == \"show\":\n            print(contato)\n\n        elif args[0] == \"add\":\n            contato.addFone(args[1],args[2])\n\n\n        elif args[0] == \"rm\":\n            contato.rmFone(int(args[1]))\n\n        elif args[0] == \"tfav\":\n            contato.toogleFavorited()\n\n\n        elif args[0] == \"end\":\n            break\n\n\n\n\n\n\nmain()",
+            "lines": "180"
         }
     ]
 }

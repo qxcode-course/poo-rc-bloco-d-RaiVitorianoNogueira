@@ -4,7 +4,21 @@ class Contato:
         self.__favorited : bool = False
         self.__fones : list[Fone] = []
 
+    def getNome(self):
+        return self.__nome
+    
+    def setNome(self, nome: str):
+        self.__nome = nome
 
+
+    def getFavorited(self):
+        return self.__favorited
+    
+    def setFavorited(self, value: bool):
+        self.__favorited = value
+
+    def getFones(self):
+        return self.__fones
 
 
     def __str__(self):
@@ -62,7 +76,17 @@ class Fone:
         self.id: str = id
         self.number : str = number
 
+    def getId(self):
+        return self.id
+    
+    def setId(self, value: str):
+        self.id = value
 
+    def getNumber(self):
+        return self.number
+    
+    def setNumber(self, value: str):
+        self.number = value
 
     def __str__(self):
         return f"{self.id}:{self.number}"
