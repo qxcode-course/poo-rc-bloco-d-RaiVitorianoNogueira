@@ -18,6 +18,7 @@ class Contato:
 
     def rmFone(self, index: int):
         self.__fones.pop(index)
+            
 
 
 
@@ -57,6 +58,19 @@ class Fone:
 
     
     def isValid(self):
+        numeros = "0123456789()."
+        for i in self.number:
+                if i not in numeros:
+                    return False
+
+        return True
+    
+
+            
+
+        
+    
+
         
 
 
