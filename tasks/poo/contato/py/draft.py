@@ -1,8 +1,12 @@
 class Contato:
+#implementação do construtor 
     def __init__(self, name: str=""):
         self.__nome : str  = name
         self.__favorited : bool = False
         self.__fones : list[Fone] = []
+
+
+#inserção dos métodos getters e setters do contato
 
     def getNome(self):
         return self.__nome
@@ -21,6 +25,8 @@ class Contato:
         return self.__fones
 
 
+
+#inserção dos métodos da classe Contato
     def __str__(self):
         favorito = "@ " if self.__favorited else "- "
         lista = ", ".join([str(fone) for fone  in self.__fones])
@@ -45,9 +51,6 @@ class Contato:
 
 
 
-
-
-
     def isFavorited(self):
         return self.__favorited
     
@@ -56,26 +59,14 @@ class Contato:
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Fone:
-
+#implementação do construtor 
     def __init__(self, id: str, number: str):
         self.id: str = id
         self.number : str = number
 
+
+#inserção dos métodos getters e setters do telefone 
     def getId(self):
         return self.id
     
@@ -88,6 +79,8 @@ class Fone:
     def setNumber(self, value: str):
         self.number = value
 
+
+#inserção dos métodos da classe telefone
     def __str__(self):
         return f"{self.id}:{self.number}"
 
@@ -100,46 +93,6 @@ class Fone:
 
         return True
     
-
-            
-
-        
-    
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -171,10 +124,6 @@ def main():
 
         elif args[0] == "end":
             break
-
-
-
-
 
 
 main()

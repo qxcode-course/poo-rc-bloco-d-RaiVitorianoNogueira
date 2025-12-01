@@ -1,4 +1,26 @@
+class Agenda:
+    def __init__(self, contacts: list[Contato]):
+        self.contacts : list[Contato] = contacts
+
+
+def addContato(self, name: str, fones: list[Fone]):
+        self.contacts.append()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class Contato:
+    
     def __init__(self, name: str=""):
         self.__nome : str  = name
         self.__favorited : bool = False
