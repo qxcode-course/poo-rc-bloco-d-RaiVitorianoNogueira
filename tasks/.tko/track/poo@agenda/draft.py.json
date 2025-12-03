@@ -52,8 +52,58 @@
         },
         {
             "label": "2025-12-03_18-33-24",
-            "content": "class Agenda:\n    def __init__(self):\n        self.contacts: list[Contato] = []\n\n    def findPosByName(self, name: str):\n        for c, d in enumerate(self.contacts):\n            if d.getNome() == name:\n                return c\n            return -1\n\n\n   \n\n\n\n\n        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass Contato:\n    \n    def __init__(self, name: str=\"\"):\n        self.__nome : str  = name\n        self.__favorited : bool = False\n        self.__fones : list[Fone] = []\n\n    def getNome(self):\n        return self.__nome\n    \n    def setNome(self, nome: str):\n        self.__nome = nome\n\n\n    def getFavorited(self):\n        return self.__favorited\n    \n    def setFavorited(self, value: bool):\n        self.__favorited = value\n\n    def getFones(self):\n        return self.__fones\n\n\n    def __str__(self):\n        favorito = \"@ \" if self.__favorited else \"- \"\n        lista = \", \".join([str(fone) for fone  in self.__fones])\n        return f\"{favorito}{self.__nome} [{lista}]\"\n    \n\n    def addFone(self, id: str, number : str): \n        fone = Fone(id, (number))\n        if not fone.isValid():\n            print(\"fail: invalid number\")\n            return \n        self.__fones.append(fone)\n        \n\n\n    def rmFone(self, index: int):\n        if 0 <= index < len(self.__fones):\n            self.__fones.pop(index)\n        else:\n            print(\"fail: invalid index\")\n\n\n\n\n\n\n\n    def isFavorited(self):\n        return self.__favorited\n    \n    def toogleFavorited(self):\n        self.__favorited = not self.isFavorited()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass Fone:\n\n    def __init__(self, id: str, number: str):\n        self.id: str = id\n        self.number : str = number\n\n    def getId(self):\n        return self.id\n    \n    def setId(self, value: str):\n        self.id = value\n\n    def getNumber(self):\n        return self.number\n    \n    def setNumber(self, value: str):\n        self.number = value\n\n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n\n    \n    def isValid(self):\n        numeros = \"0123456789().\"\n        for i in self.number:\n                if i not in numeros:\n                    return False\n\n        return True\n    \n\n            \n\n\n\ndef main():\n    contato = Contato()\n\n    while True:\n        line = input()\n        args = line.split()\n        print(\"$\" + line)\n\n\n        if args[0] == \"init\":\n            contato = Contato(args[1])\n\n        elif args[0] == \"show\":\n            print(contato)\n\n        elif args[0] == \"add\":\n            contato.addFone(args[1],args[2])\n\n\n        elif args[0] == \"rm\":\n            contato.rmFone(int(args[1]))\n\n        elif args[0] == \"tfav\":\n            contato.toogleFavorited()\n\n\n        elif args[0] == \"end\":\n            break\n\n\n\n\n\n\nmain()",
+            "content": "@@ -78,32 +78,8 @@\n %5B%5D%0A%0A\n-%0A#pesquisar os contatos%0A\n     \n",
             "lines": "174"
+        },
+        {
+            "label": "2025-12-03_18-35-33",
+            "content": "@@ -2182,24 +2182,25 @@\n     \n-agenda  = agenda\n+contato = Contato\n ()%0A%0A\n",
+            "lines": "176"
+        },
+        {
+            "label": "2025-12-03_18-51-45",
+            "content": "@@ -273,243 +273,8 @@\n 1%0A%0A%0A\n-    def addContact(self, name: str, fones: list%5BFone%5D):%0A        p = self.findPosByName(name)%0A%0A        if p != -1:%0A            for f in fones:%0A                if f.isvalid():%0A                    self.contacts%5Bp%5D.getFones().append(f)%0A%0A%0A%0A\n    %0A\n@@ -2292,16 +2292,17 @@\n  line)%0A%0A\n+%0A\n         \n@@ -2316,19 +2316,20 @@\n %5B0%5D == %22\n-add\n+init\n %22:%0A     \n@@ -2339,22 +2339,35 @@\n     \n-name = \n+contato = Contato(\n args%5B1%5D\n+)%0A\n %0A   \n@@ -2375,22 +2375,279 @@\n     \n-    fones = %5B%5D\n+elif args%5B0%5D == %22show%22:%0A            print(contato)%0A%0A        elif args%5B0%5D == %22add%22:%0A            contato.addFone(args%5B1%5D,args%5B2%5D)%0A%0A%0A        elif args%5B0%5D == %22rm%22:%0A            contato.rmFone(int(args%5B1%5D))%0A%0A        elif args%5B0%5D == %22tfav%22:%0A            contato.toogleFavorited()\n %0A%0A%0A \n",
+            "lines": "176"
+        },
+        {
+            "label": "2025-12-03_19-01-27",
+            "content": "@@ -363,16 +363,153 @@\n (name)%0A%0A\n+        if p != -1:%0A            for f in fones:%0A                if f.isvalid():%0A                    self.contacts%5Bp%5D.getFones().append(f)\n %0A%0A%0A%0A   %0A\n",
+            "lines": "173"
+        },
+        {
+            "label": "2025-12-03_19-01-59",
+            "content": "@@ -362,20 +362,16 @@\n e(name)%0A\n-    \n %0A%0A%0A%0A%0A   \n",
+            "lines": "170"
+        },
+        {
+            "label": "2025-12-03_19-12-21",
+            "content": "@@ -329,25 +329,57 @@\n %5D):%0A        \n-%0A\n+p = self.findPosByName(name)%0A    \n %0A%0A%0A%0A%0A   %0A%0A%0A%0A\n",
+            "lines": "170"
+        },
+        {
+            "label": "2025-12-03_19-12-28",
+            "content": "@@ -153,23 +153,17 @@\n  for c, \n-contato\n+d\n  in enum\n@@ -199,23 +199,17 @@\n      if \n-contato\n+d\n .getNome\n@@ -329,80 +329,8 @@\n %5D):%0A\n-        p = self.findPosByName(name)%0A%0A%0A        if p != -1:%0A            %0A\n     \n",
+            "lines": "170"
+        },
+        {
+            "label": "2025-12-03_19-19-19",
+            "content": "@@ -412,83 +412,8 @@\n     \n-contato = self.contacts%5Bp%5D%0A            for fone in fones:%0A                %0A\n %0A   \n",
+            "lines": "175"
+        },
+        {
+            "label": "2025-12-03_19-28-38",
+            "content": "@@ -486,155 +486,8 @@\n     \n-contato.addFone(fone.getId(), fone.getNumber())%0A            return%0A        %0A%0A%0A        novo = Contato(name)%0A        for fone in fones:%0A            %0A\n %0A%0A  \n",
+            "lines": "178"
+        },
+        {
+            "label": "2025-12-03_19-32-29",
+            "content": "@@ -616,16 +616,28 @@\n  fones:%0A\n+            \n %0A%0A%0A     \n@@ -2668,18 +2668,16 @@\n  line)%0A%0A\n-%0A%0A\n         \n@@ -2693,58 +2693,8 @@\n %5D ==\n- %22end%22:%0A            break%0A%0A        elif args%5B0%5D ==\n  %22ad\n@@ -2747,28 +2747,26 @@\n es = %5B%5D%0A\n-    \n+%0A%0A\n         \n for fn i\n@@ -2761,165 +2761,48 @@\n     \n-for fn in args%5B2:%5D:%0A                id, num = fn.split(%22:%22)%0A                fones.append(Fone(id,num))%0A%0A            agenda.addContact(name, fones)%0A%0A%0A        \n+elif args%5B0%5D == %22end%22:%0A            break\n %0A%0A%0A%0A\n",
+            "lines": "186"
+        },
+        {
+            "label": "2025-12-03_19-42-47",
+            "content": "class Agenda:\n    def __init__(self):\n        self.contacts: list[Contato] = []\n\n\n#pesquisar os contatos\n    def findPosByName(self, name: str):\n        for c, contato in enumerate(self.contacts):\n            if contato.getNome() == name:\n                return c\n            return -1\n\n\n    def addContact(self, name: str, fones: list[Fone]):\n        p = self.findPosByName(name)\n\n\n        if p != -1:\n            contato = self.contacts[p]\n            for fone in fones:\n                contato.addFone(fone.getId(), fone.getNumber())\n            return\n        \n\n\n        novo = Contato(name)\n        for fone in fones:\n\n\n\n        \n\n\n\n\n\n   \n\n\n\n\n        \n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass Contato:\n    \n    def __init__(self, name: str=\"\"):\n        self.__nome : str  = name\n        self.__favorited : bool = False\n        self.__fones : list[Fone] = []\n\n    def getNome(self):\n        return self.__nome\n    \n    def setNome(self, nome: str):\n        self.__nome = nome\n\n\n    def getFavorited(self):\n        return self.__favorited\n    \n    def setFavorited(self, value: bool):\n        self.__favorited = value\n\n    def getFones(self):\n        return self.__fones\n\n\n    def __str__(self):\n        favorito = \"@ \" if self.__favorited else \"- \"\n        lista = \", \".join([str(fone) for fone  in self.__fones])\n        return f\"{favorito}{self.__nome} [{lista}]\"\n    \n\n    def addFone(self, id: str, number : str): \n        fone = Fone(id, (number))\n        if not fone.isValid():\n            print(\"fail: invalid number\")\n            return \n        self.__fones.append(fone)\n        \n\n\n    def rmFone(self, index: int):\n        if 0 <= index < len(self.__fones):\n            self.__fones.pop(index)\n        else:\n            print(\"fail: invalid index\")\n\n\n\n\n\n\n\n    def isFavorited(self):\n        return self.__favorited\n    \n    def toogleFavorited(self):\n        self.__favorited = not self.isFavorited()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nclass Fone:\n\n    def __init__(self, id: str, number: str):\n        self.id: str = id\n        self.number : str = number\n\n    def getId(self):\n        return self.id\n    \n    def setId(self, value: str):\n        self.id = value\n\n    def getNumber(self):\n        return self.number\n    \n    def setNumber(self, value: str):\n        self.number = value\n\n    def __str__(self):\n        return f\"{self.id}:{self.number}\"\n\n    \n    def isValid(self):\n        numeros = \"0123456789().\"\n        for i in self.number:\n                if i not in numeros:\n                    return False\n\n        return True\n    \n\n            \n\n\n\ndef main():\n    agenda  = agenda()\n\n    while True:\n        line = input()\n        args = line.split()\n        print(\"$\" + line)\n\n\n\n        if args[0] == \"end\":\n            break\n\n        elif args[0] == \"add\":\n            name = args[1]\n            fones = []\n            for fn in args[2:]:\n                id, num = fn.split(\":\")\n                fones.append(Fone(id,num))\n\n            agenda.addContact(name, fones)\n\n\n        \n\n\n\n\n\n\nmain()",
+            "lines": "195"
         }
     ]
 }

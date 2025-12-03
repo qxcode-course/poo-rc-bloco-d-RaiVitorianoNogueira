@@ -5,10 +5,34 @@ class Agenda:
 
 #pesquisar os contatos
     def findPosByName(self, name: str):
-        for c, d in enumerate(self.contacts):
-            if d.getNome() == name:
+        for c, contato in enumerate(self.contacts):
+            if contato.getNome() == name:
                 return c
             return -1
+
+
+    def addContact(self, name: str, fones: list[Fone]):
+        p = self.findPosByName(name)
+
+
+        if p != -1:
+            contato = self.contacts[p]
+            for fone in fones:
+                contato.addFone(fone.getId(), fone.getNumber())
+            return
+        
+
+
+        novo = Contato(name)
+        for fone in fones:
+            contato.addFone
+
+
+
+        
+
+
+
 
 
    
@@ -140,7 +164,7 @@ class Fone:
 
 
 def main():
-    contato = Contato()
+    agenda  = agenda()
 
     while True:
         line = input()
@@ -148,25 +172,21 @@ def main():
         print("$" + line)
 
 
-        if args[0] == "init":
-            contato = Contato(args[1])
 
-        elif args[0] == "show":
-            print(contato)
+        if args[0] == "end":
+            break
 
         elif args[0] == "add":
-            contato.addFone(args[1],args[2])
+            name = args[1]
+            fones = []
+            for fn in args[2:]:
+                id, num = fn.split(":")
+                fones.append(Fone(id,num))
+
+            agenda.addContact(name, fones)
 
 
-        elif args[0] == "rm":
-            contato.rmFone(int(args[1]))
-
-        elif args[0] == "tfav":
-            contato.toogleFavorited()
-
-
-        elif args[0] == "end":
-            break
+        
 
 
 
