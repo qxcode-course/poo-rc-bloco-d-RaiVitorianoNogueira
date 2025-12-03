@@ -2,3 +2,6 @@
 2025-12-01 01:37:50, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0, size:142
 2025-12-01 01:42:53, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0
 2025-12-01 02:39:12, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0, size:163
+2025-12-01 02:50:27, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0, size:164
+2025-12-01 02:54:39, EXEC, v:1, k:poo@agenda, mode:FULL, rate:0
+2025-12-01 02:54:42, MOVE, v:1, k:poo@agenda, mode:BACK

@@ -3,8 +3,9 @@ class Agenda:
         self.contacts : list[Contato] = contacts
 
 
-def addContato(self, name: str, fones: list[Fone]):
-        self.contacts.append()
+
+
+        
 
 
 
