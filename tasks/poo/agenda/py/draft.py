@@ -5,31 +5,43 @@ class Agenda:
 
 #pesquisar os contatos
     def findPosByName(self, name: str):
-        for c, contato in enumerate(self.contacts):
+        for i, contato in enumerate(self.contacts):
             if contato.getNome() == name:
-                return c
+                return i
             return -1
+
+    def __str__(self):
+        return "\n".join(str(c) for in c in self.contacts)
+
 
 
     def addContact(self, name: str, fones: list[Fone]):
         p = self.findPosByName(name)
-
-
         if p != -1:
-            contato = self.contacts[p]
-            for fone in fones:
-                contato.addFone(fone.getId(), fone.getNumber())
+            cont = self.contacts[p]
+            for f in fones:
+                cont.addFone(f.getId(), f.getNumber())
             return
-        
-
-
         novo = Contato(name)
-        for fone in fones:
-            contato.addFone
-
-
-
+        for f in fones:
+            novo.addFone(f.getId(), f.getNumber())
         
+        self.contacts.append(novo)
+        self.contacts.sort(key=lambda c: c.getNome())
+
+    def getContact(self, name: str):
+        p =  self.findPosByName(name)
+        if p == -1:
+            return None
+        return self.contacts[p]
+    
+    def rmContact(self, name: str):
+        p = self.findPosByName(name)
+        if p != -1:
+            self.contacts.pop(p)
+
+
+
 
 
 
@@ -86,7 +98,7 @@ class Contato:
     
 
     def addFone(self, id: str, number : str): 
-        fone = Fone(id, (number))
+        fone = Fone(id, number)
         if not fone.isValid():
             print("fail: invalid number")
             return 
@@ -164,7 +176,7 @@ class Fone:
 
 
 def main():
-    agenda  = agenda()
+    agenda  = Agenda()
 
     while True:
         line = input()
@@ -182,8 +194,19 @@ def main():
             for fn in args[2:]:
                 id, num = fn.split(":")
                 fones.append(Fone(id,num))
-
             agenda.addContact(name, fones)
+
+        elif args[0] == "show":
+            print(agenda)
+
+        elif args[0] == "rm":
+            agenda.rmContact(args[1])
+
+        elif args[0] == "rmFone":
+
+
+
+
 
 
         

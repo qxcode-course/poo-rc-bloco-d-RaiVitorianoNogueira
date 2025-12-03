@@ -12,7 +12,7 @@ sources:
   type: clone
   branch: master
   cache_path: ''
-  cache_timestamp: '2025-12-03 17:49:22'
+  cache_timestamp: '2025-12-03 20:43:47'
   filters:
   - crud
 expanded:
@@ -20,13 +20,6 @@ expanded:
 - poo@bloco_d-crud-com-mapas-e-enumerações
 tasks:
   poo@contato: '{rate:100, human:os_monitores_me_ajudaram_a_implementar_alguns_metodos_que_eu_nao_sabiaaa,
-
-
-
-
-
-
-
     alone:10, study:240}'
 flags:
   quests: 0
