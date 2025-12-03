@@ -1,6 +1,17 @@
 class Agenda:
-    def __init__(self, contacts: list[Contato]):
-        self.contacts : list[Contato] = contacts
+    def __init__(self):
+        self.contacts: list[Contato] = []
+
+
+#pesquisar os contatos
+    def findPosByName(self, name: str):
+        for c, d in enumerate(self.contacts):
+            if d.getNome() == name:
+                return c
+            return -1
+
+
+   
 
 
 
