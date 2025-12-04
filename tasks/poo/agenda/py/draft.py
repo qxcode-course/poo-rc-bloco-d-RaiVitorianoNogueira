@@ -1,72 +1,3 @@
-class Agenda:
-    def __init__(self):
-        self.contacts: list[Contato] = []
-
-
-#pesquisar os contatos
-    def findPosByName(self, name: str):
-        for i, contato in enumerate(self.contacts):
-            if contato.getNome() == name:
-                return i
-            return -1
-
-    def __str__(self):
-        return "\n".join(str(c) for in c in self.contacts)
-
-
-
-    def addContact(self, name: str, fones: list[Fone]):
-        p = self.findPosByName(name)
-        if p != -1:
-            cont = self.contacts[p]
-            for f in fones:
-                cont.addFone(f.getId(), f.getNumber())
-            return
-        novo = Contato(name)
-        for f in fones:
-            novo.addFone(f.getId(), f.getNumber())
-        
-        self.contacts.append(novo)
-        self.contacts.sort(key=lambda c: c.getNome())
-
-    def getContact(self, name: str):
-        p =  self.findPosByName(name)
-        if p == -1:
-            return None
-        return self.contacts[p]
-    
-    def rmContact(self, name: str):
-        p = self.findPosByName(name)
-        if p != -1:
-            self.contacts.pop(p)
-
-
-
-
-
-
-
-
-   
-
-
-
-
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 class Contato:
     
     def __init__(self, name: str=""):
@@ -130,16 +61,6 @@ class Contato:
 
 
 
-
-
-
-
-
-
-
-
-
-
 class Fone:
 
     def __init__(self, id: str, number: str):
@@ -169,6 +90,54 @@ class Fone:
                     return False
 
         return True
+
+
+
+
+
+class Agenda:
+    def __init__(self):
+        self.contacts: list[Contato] = []
+
+
+#pesquisar os contatos
+    def findPosByName(self, name: str):
+        for i, contato in enumerate(self.contacts):
+            if contato.getNome() == name:
+                return i
+        return -1
+
+    def __str__(self):
+        return "\n".join(str(c) for  c in self.contacts)
+    
+
+
+
+
+    def addContact(self, name: str, fones: list[Fone]):
+        p = self.findPosByName(name)
+        if p != -1:
+            cont = self.contacts[p]
+            for f in fones:
+                cont.addFone(f.getId(), f.getNumber())
+            return
+        novo = Contato(name)
+        for f in fones:
+            novo.addFone(f.getId(), f.getNumber())
+        
+        self.contacts.append(novo)
+        self.contacts.sort(key=lambda c: c.getNome())
+
+    def getContact(self, name: str):
+        p =  self.findPosByName(name)
+        if p == -1:
+            return None
+        return self.contacts[p]
+    
+    def rmContact(self, name: str):
+        p = self.findPosByName(name)
+        if p != -1:
+            self.contacts.pop(p)
     
 
             
@@ -191,9 +160,14 @@ def main():
         elif args[0] == "add":
             name = args[1]
             fones = []
+
             for fn in args[2:]:
+                if ":" not in fn:
+                    print("fail: formato invalido")
+                    break
                 id, num = fn.split(":")
-                fones.append(Fone(id,num))
+                fones.append(Fone(id, num))
+
             agenda.addContact(name, fones)
 
         elif args[0] == "show":
@@ -204,15 +178,7 @@ def main():
 
         elif args[0] == "rmFone":
 
-
-
-
-
-
         
-
-
-
 
 
 
